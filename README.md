@@ -362,5 +362,3 @@ npm run build
 **Designed & Developed by [ngoanhkhoi978](https://github.com/ngoanhkhoi978)**
 
 </div>
-#   S a f e V a u l t  
- 
