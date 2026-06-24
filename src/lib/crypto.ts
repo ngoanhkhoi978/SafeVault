@@ -35,11 +35,11 @@ async function deriveKey(
   });
 
   return crypto.subtle.importKey(
-    'raw',
-    result.hash,
-    { name: 'AES-GCM' },
-    false,
-    ['encrypt', 'decrypt']
+      'raw',
+      result.hash.buffer as ArrayBuffer,
+      { name: 'AES-GCM' },
+      false,
+      ['encrypt', 'decrypt']
   );
 }
 
