@@ -136,9 +136,9 @@ export async function decryptText(
 
   try {
     const decrypted = await crypto.subtle.decrypt(
-      { name: 'AES-GCM', iv },
-      key,
-      ciphertext
+        { name: 'AES-GCM', iv },
+        key,
+        ciphertext.buffer
     );
 
     const plaintext = new TextDecoder().decode(decrypted);
