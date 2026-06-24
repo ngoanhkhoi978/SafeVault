@@ -19,6 +19,10 @@ const ARGON2_TIME_COST = 3;
 const ARGON2_PARALLELISM = 1;
 const ARGON2_HASH_LEN = 32;
 
+function toArrayBuffer(bytes: Uint8Array): ArrayBuffer {
+  return bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer;
+}
+
 // ── Key Derivation ──
 async function deriveKey(
   password: string,
@@ -136,9 +140,9 @@ export async function decryptText(
 
   try {
     const decrypted = await crypto.subtle.decrypt(
-        { name: 'AES-GCM', iv },
+        { name: 'AES-GCM', iv: toArrayBuffer(iv) },
         key,
-        ciphertext.buffer
+        toArrayBuffer(ciphertext)
     );
 
     const plaintext = new TextDecoder().decode(decrypted);
@@ -184,7 +188,7 @@ export async function encryptFile(
   const packed = packData(salt, iv, ciphertext);
   const duration = performance.now() - start;
 
-  const blob = new Blob([packed], { type: 'application/octet-stream' });
+  const blob = new Blob([toArrayBuffer(packed)], { type: 'application/octet-stream' });
 
   return {
     blob,
@@ -207,9 +211,9 @@ export async function decryptFile(
 
   try {
     const decrypted = await crypto.subtle.decrypt(
-      { name: 'AES-GCM', iv },
+      { name: 'AES-GCM', iv: toArrayBuffer(iv) },
       key,
-      ciphertext
+      toArrayBuffer(ciphertext)
     );
 
     const decryptedBytes = new Uint8Array(decrypted);
