@@ -25,6 +25,14 @@ Designed to feel like a **real product** rather than a technical demo, inspired 
 
 ---
 
+## 🌐 Demo
+
+SafeVault is available online:
+
+> https://safe-vault-sigma.vercel.app/
+
+---
+
 ## 🎯 Features
 
 | Feature | Description |
@@ -187,6 +195,7 @@ npm run build
 
 Output is in the `dist/` folder. Deploy to any static host (Vercel, Netlify, GitHub Pages, Cloudflare Pages, etc.).
 
+
 ### Preview Production Build
 
 ```bash
@@ -293,7 +302,10 @@ SafeVault là ứng dụng web mã hóa dữ liệu hoạt động **hoàn toàn
 
 Ứng dụng được thiết kế với tiêu chí **sản phẩm thực tế**, lấy cảm hứng từ Linear, Arc Browser và Raycast.
 
+
 ---
+
+
 
 ## 🎯 Tính năng chính
 
